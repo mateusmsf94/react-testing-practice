@@ -47,3 +47,16 @@ test('Teste se a Pokédex tem os botões de filtro', () => {
   const allBtn = screen.getByRole('button', { name: 'All' });
   expect(allBtn).toBeInTheDocument();
 });
+
+test('se é mostrado apenas um pokémon por vez', () => {
+  renderWithRouter(<App />);
+  const typeBtn = screen.getAllByTestId('pokemon-type-button');
+  userEvent.click(typeBtn[1]);
+  const pokemonType = screen.getAllByText('Fire');
+  expect(pokemonType).toHaveLength(2);
+  const allBtn = screen.getByRole('button', { name: 'All' });
+  expect(allBtn).toBeInTheDocument();
+  userEvent.click(allBtn);
+  const pokemonTypeAfter = screen.getAllByText('Fire');
+  expect(pokemonTypeAfter).toHaveLength(1);
+});
