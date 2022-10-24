@@ -16,7 +16,7 @@ class Pokemon extends React.Component {
       <div className="pokemon">
         <div className="pokemon-overview">
           <p data-testid="pokemon-name">{name}</p>
-          <p data-testid="pokemon-type">{`${type}`}</p>
+          <p data-testid="pokemon-type">{type}</p>
           <p data-testid="pokemon-weight">
             Average weight: {value} {measurementUnit}
           </p>
