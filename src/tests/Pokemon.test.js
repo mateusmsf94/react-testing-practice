@@ -9,7 +9,7 @@ test('se é renderizado um card com as informações de determinado pokémon:', 
   const pokemonName = screen.getByTestId('pokemon-name');
   expect(pokemonName).toBeInTheDocument();
   const pokemonType = screen.getByTestId('pokemon-type');
-  expect(pokemonType).toBeInTheDocument();
+  expect(pokemonType.innerHTML).toBe('Electric');
   const pokemonWeight = screen.getByTestId('pokemon-weight');
   expect(pokemonWeight).toBeInTheDocument();
   const img = screen.getByRole('img');
@@ -31,9 +31,7 @@ test('Teste se ao clicar no link de navegação do pokémon, é feito o redireci
 test('Teste se existe um ícone de estrela nos pokémons favoritados:', () => {
   renderWithRouter(<App />);
   userEvent.click(screen.getByRole('link', { name: 'More details' }));
-
   userEvent.click(screen.getByLabelText(/Pokémon favoritado?/i));
-
   userEvent.click(screen.getByRole('link', { name: 'Home' }));
   const img = screen.getByAltText(/marked/);
   expect(img).toHaveAttribute('src', '/star-icon.svg');
