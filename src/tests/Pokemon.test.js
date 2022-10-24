@@ -31,9 +31,7 @@ test('Teste se ao clicar no link de navegação do pokémon, é feito o redireci
 test('Teste se existe um ícone de estrela nos pokémons favoritados:', () => {
   renderWithRouter(<App />);
   userEvent.click(screen.getByRole('link', { name: 'More details' }));
-
   userEvent.click(screen.getByLabelText(/Pokémon favoritado?/i));
-
   userEvent.click(screen.getByRole('link', { name: 'Home' }));
   const img = screen.getByAltText(/marked/);
   expect(img).toHaveAttribute('src', '/star-icon.svg');
